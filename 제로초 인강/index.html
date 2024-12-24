@@ -72,7 +72,7 @@
             --color_shop: #9858f5;
             --color_shop_rgb: 152, 88, 245;
 }
-        }
+        
         html, body {
             margin: 0;
             padding: 0;
@@ -102,6 +102,7 @@
         #header-hamburger:hover::before {
             content: '';
             position: absolute;
+            z-index: 0;
             left: 1px;
             top: 1px;
             width: 44px;
@@ -121,24 +122,38 @@
             background-repeat: no-repeat;
             width: 26px;
             height: 26px;
+            z-index: 1;
+            position: relative;
         }
         #main {
             height: 2000px;
         }
+        .blind {
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+        }
+    
     </style>
 </head>
 <body>
-     <div id="wrap">
+    <div id="wrap">
         <div id="wrap-center">
             <div id="header">
                 <button id="header-hamburger">
+                    <!--::before-->
                     <div></div>
+                    <span class="blind">확장 영역</span>
+                    <!--::after-->
                 </button>
             </div>
             <div id="search"></div>
             <div id="nav"></div>
             <div id="main"></div>
         </div>
-     </div>
+    </div>
 </body>
 </html>
