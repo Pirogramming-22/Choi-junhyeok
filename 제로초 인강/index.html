@@ -876,12 +876,14 @@
                     padding: 10px;
                 }
                 #main-shopping-grid {
+                    margin-top: 20px;
                     display: grid;
-                    grid-auto-flow: column;
-                    grid-template-rows: 1fr 1fr 2fr;
+                    grid-template-rows: 90px 95px 185px;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 250px;
+                    column-gap: 20px;
                 }
-                .item:nth-child(1), .item:nth-child(3), .item:nth-child(5),.item:nth-child(7) {
-
+                .item:nth-child(1), .item:nth-child(2), .item:nth-child(3),.item:nth-child(4) {
+                    grid-row: 1 / span 2;
                 }
             </style>
             <main id="main">
