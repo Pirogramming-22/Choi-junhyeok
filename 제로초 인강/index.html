@@ -600,7 +600,7 @@
                     padding: 18px 20px;
                 }
                 #main-newstand-top .dot::before {
-                    content: "";
+                    content: '';
                     display: inline-block;
                     width: 4px;
                     height: 4px;
@@ -611,7 +611,7 @@
                     vertical-align: 5px;
                 }
                 #main-newstand-top .slash, #main-newstand-top .dot {
-                    color: rgba(8,8,8,.5);
+                    color: rgba(8, 8, 8, .5);
                     font-weight: 800;
                 }
                 #main-newstand-top .slash {
@@ -619,7 +619,7 @@
                     padding-left: 26px;
                 }
                 #main-newstand-top .slash::before {
-                    content: "";
+                    content: '';
                     display: inline-block;
                     position: absolute;
                     top: 4px;
@@ -628,7 +628,9 @@
                     height: 15px;
                     background-color: #d3d5d7;
                     background-color: var(--color_dot_divider);
-                    transform: skewX(-15deg)
+                    -webkit-transform: skewX(-15deg); 
+                    -ms-transform: skewX(-15deg);
+                    transform: skewX(-15deg);
                 }
                 #main-newstand header {
                     font-size: 1.6rem;
@@ -660,8 +662,8 @@
                     width: 85.5px;
                 }
                 #main-newstand-gray .left > a:first-of-type::after {
-                    content: "";
-                    background: url('./sp_main.png');
+                    content: '';
+                    background-image: url('./sp_main.png');
                     background-size: 463px 440px;
                     background-position: -242px -184px;
                     background-repeat: no-repeat;
@@ -693,7 +695,7 @@
                     line-height: 26px;
                 }
                 #main-newstand-animation a:first-of-type::after {
-                    content: "";
+                    content: '';
                     display: inline-block;
                     width: 3px;
                     height: 3px;
@@ -703,9 +705,9 @@
                     border-radius: 50%;
                     vertical-align: 5px;
                 }
-                #main-newstand-animation a:last-of-type {
+                #main-newstand-animation > a:last-of-type {
                     text-overflow: ellipsis;
-                    width: 400px;
+                    width: 430px;
                     white-space: nowrap;
                     display: inline-block;
                     overflow: hidden;
@@ -713,12 +715,12 @@
                 #main-newstand-gray .right {
                     display: flex;
                 }
-                #main-newstand-gray .blod {
+                #main-newstand-gray .bold {
                     font-weight: bold;
                     padding-left: 25px;
                     position: relative;
                 }
-                #main-newstand-gray .blod::before {
+                #main-newstand-gray .bold::before {
                     content: "";
                     display: block;
                     position: absolute;
