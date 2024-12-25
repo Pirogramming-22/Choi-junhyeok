@@ -1,0 +1,223 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+top {
+    background-color: #394555;
+    flex-shrink: 0;
+}
+
+#header-left {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#header-left-logo {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+#header-left-navs button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+}
+
+#header-left-navs button svg {
+    vertical-align: middle;
+    opacity: 0.7;
+    width: 16px;
+}
+
+#header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 50px;
+    margin-top: -35px;
+}
+
+#header-right-search {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#header-right-search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #24292e;
+    background-color: #ffffff;
+    width: 180px;
+}
+
+#header-right-search input::placeholder {
+    color: #6a737d;
+    font-style: italic;
+}
+
+#header-right-sign_in {
+    font-size: 14px;
+    color: #ffffff;
+    background: none;
+    border: none;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+#header-right-sign_up {
+    font-size: 14px;
+    color: #ffffff;
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    padding: 5px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#header-right-sign_up:hover {
+    background-color: #ffffff;
+    color: #24292e;
+}
+
+#main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+    height: 500px;
+}
+
+#main-left-title h1 {
+    color: white;
+}
+
+#main-left-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    margin-top: 90px;
+    margin-left: 170px;
+    line-height: 1;
+}
+
+#main-left-text {
+    font-size: 18px;
+    line-height: 1.5;
+    color: lightgray;
+    margin-top: -25px;
+    margin-left: 170px;
+}
+
+#main-right {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin-right: 175px;
+    margin-top: -20px;
+    align-self: flex-start;
+}
+
+#main-right p {
+    font-size: 12px;
+    color: #586069;
+    line-height: 1.5;
+    margin-bottom: -10px;
+}
+
+#main-right a {
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+#main-right a:hover {
+    text-decoration: underline;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #24292f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 92%;
+    padding: 15px;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    background-color: #f6f8fa;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #0366d6;
+    background-color: #eaf3ff;
+    box-shadow: 0 0 5px rgba(3, 102, 214, 0.5);
+}
+
+#signup-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #2ea44f;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#signup-button:hover {
+    background-color: #22863a;
+}
+
+#footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 20px;
+    background-color: #ffffff;
+    height: 150px;
+    position: relative;
+}
+
+#footer img {
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    background-color: transparent;
+}
