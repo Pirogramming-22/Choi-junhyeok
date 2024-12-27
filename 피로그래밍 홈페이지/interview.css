@@ -195,6 +195,7 @@ section a, section span {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
+    transition: transform 0.3s ease;
 }
 
 footer {
@@ -333,6 +334,11 @@ a:hover {
 .profile-box:hover {
     transform: translateY(-2px);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.profile-box:hover .profile-img img {
+    transform: scale(1.1);
 }
 
 @media screen and (max-width: 1080px) {
