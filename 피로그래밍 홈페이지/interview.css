@@ -25,17 +25,18 @@
 header {
     display: flex;
     justify-content: space-between;
-    min-height: 90px; /* 헤더 높이 */
+    min-height: 90px;
     padding: 0 40px;
     align-items: center;
     background-color: black;
-    position: fixed; /* 스크롤해도 고정 */
-    top: 0; /* 화면 상단에 고정 */
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%; /* 전체 너비 */
-    z-index: 1000; /* 다른 요소보다 위에 배치 */
+    width: 100%;
+    z-index: 1000;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%);
 }
+
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -53,13 +54,12 @@ header {
 
 .hamburger-menu div:first-child {
     width: 50%;
-    align-self: flex-start; /* 왼쪽 정렬 */
+    align-self: flex-start;
 }
 
-/* 세 번째 줄 길이 75% */
 .hamburger-menu div:last-child {
     width: 75%;
-    align-self: flex-start; /* 왼쪽 정렬 */
+    align-self: flex-start;
 }
 
 .header-nav ul {
@@ -114,11 +114,12 @@ section a, section span {
 .next-nth a {
     font-size: 19px;
 }
+
 .profile-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3개의 열, 균등한 너비 */
+    grid-template-columns: repeat(3, 1fr);
     background-color: black;
-    gap: 20px; /* 간격 줄임 (기존보다 더 작은 값 설정) */
+    gap: 20px;
     padding: 40px;
 }
 
@@ -130,18 +131,19 @@ section a, section span {
     padding: 20px;
     border-radius: 5px;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 애니메이션 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .hamburger {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20px; /* 햄버거 메뉴 너비 */
-    height: 15px; /* 햄버거 메뉴 높이 */
+    width: 20px;
+    height: 15px;
     cursor: pointer;
-    position: absolute; /* 절대 위치 */
-    top: 15px; /* 프로필 박스 상단에서의 거리 */
-    right: 10px; /* 프로필 박스 오른쪽에서의 거리 */
+    position: absolute;
+    top: 15px;
+    right: 10px;
     margin: 10px;
 }
 
@@ -149,45 +151,51 @@ section a, section span {
     background-color: var(--bg-5);
     height: 2px;
     width: 100%;
-    border-radius: 2px; /* 막대기 둥글게 */
+    border-radius: 2px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .content-top {
     display: flex;
     align-items: center;
     justify-content: left;
     margin-bottom: 15px;
 }
+
 .content-bottom span {
     font-size: 18px;
 }
+
 .content-top-right .name {
     margin-bottom: 20px;
     font-size: 20px;
 }
+
 .content-top-right .major span {
     padding: 5px;
     background-color: var(--blue);
     border-radius: 10%;
 }
+
 .content-top-right .non-major span {
     padding: 5px;
     background-color: var(--red);
     border-radius: 10%;
 }
+
 .content-top-right .both-major span {
     padding: 5px;
     background-color: var(--badge-green);
     border-radius: 10%;
 }
+
 .profile-img img {
-    width: 80px; /* 이미지 너비 */
-    height: 80px; /* 이미지 높이 */
-    border-radius: 50%; /* 원형 이미지 */
-    object-fit: cover; /* 이미지를 잘라내어 박스에 맞춤 */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-right: 20px;
 }
-
 
 footer {
     min-height: 234px;
@@ -308,6 +316,10 @@ a {
 a:hover {
     transform: translateY(-2px);
 }
+.no-hover:hover {
+    transform: none;
+}
+
 .profile-box:hover .hamburger div:first-child {
     transform-origin: left;
     transform: scaleX(0.5);
@@ -316,11 +328,11 @@ a:hover {
 .profile-box:hover .hamburger div:last-child {
     transform-origin: right;
     transform: scaleX(0.5);
-} 
+}
 
 .profile-box:hover {
-    transform: translateY(-2px); /* 위로 2px 상승 */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 */
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 1080px) {
@@ -354,24 +366,25 @@ a:hover {
         gap: 10px;
     }
 }
+
 @media screen and (max-width: 800px) {
     .header-nav {
-        display: none; /* 네비게이션 숨김 */
+        display: none;
     }
 
     .hamburger-menu {
-        display: flex; /* 햄버거 메뉴 표시 */
-    }
-}
-@media screen and (max-width: 850px) {
-    .profile-container {
-        grid-template-columns: repeat(2, 1fr); /* 2개의 열 */
+        display: flex;
     }
 }
 
-/* 화면 크기가 600px 이하일 때 */
+@media screen and (max-width: 850px) {
+    .profile-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 600px) {
     .profile-container {
-        grid-template-columns: 1fr; /* 1개의 열 */
+        grid-template-columns: 1fr;
     }
 }
