@@ -103,14 +103,14 @@
         "gender": "male",
         "size": "large",
         "color": "yellow",
-        "image": "../img/yellow_t.png"
+        "image": "img/yellow_t.png"
       },
       {
         "type": "pants",
         "gender": "female",
         "size": "small",
         "color": "pink",
-        "image": "../img/pink_p.png"
+        "image": "img/pink_p.png"
       }
     ]
   }
