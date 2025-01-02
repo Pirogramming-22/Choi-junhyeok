@@ -1,0 +1,116 @@
+:root {
+    
+    --font-small: 15px;
+    --font-big: 30px;
+    --icon-size: 25px;
+    --padding: 20px;
+    --gap-small: 5px;
+    --gap-big: 10px;
+    --margin-small: 5px;
+    --margin-big: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 수평 중앙 정렬 */
+    align-items: center;    /* 수직 중앙 정렬 */
+    min-height: 100vh;      /* 화면 전체 높이 */
+    margin: 0;              /* 기본 여백 제거 */
+    padding-top: 50px;
+}
+
+.title_field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+}
+.title_field svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-bottom: 5px;
+}
+
+.stopwatch_field {
+    display: flex;
+    flex-direction: column;
+    background-color:slategray;
+    border-radius: 15px;
+    width: 50%;
+    height: 250px;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    width: 80%;
+    height:40%;
+    border-radius: 15px;
+    font-size: 40px;
+}
+
+.buttons button{
+    margin: var(--margin-big);
+    background-color:lightgray;
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    border: none;
+}
+
+.record_field {
+    display: flex;
+    flex-direction: column;
+    width: 53%;
+}
+.record_field-top {
+    display: flex;
+    background-color: slategray;
+    border-top-left-radius: 15px;  /* 왼쪽 위만 둥글게 */
+    border-top-right-radius: 15px; /* 오른쪽 위만 둥글게 */
+    border-bottom-left-radius: 0;  /* 왼쪽 아래 직각 */
+    border-bottom-right-radius: 0; /* 오른쪽 아래 직각 */
+    justify-content: space-around;
+    gap: 120px;
+    align-items: center;
+}
+.record_field-top svg {
+    height: 30px;
+    width: 30px;
+}
+
+.record_field-top button {
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border: none;
+}
+.record {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 200px;
+    gap: 150px;
+    align-items: center;
+}
+
+.record_field-bottom {
+    gap: 0;
+}
+.record_field-bottom svg {
+    height: 30px;
+    width: 30px;
+}
+.record button {
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+
