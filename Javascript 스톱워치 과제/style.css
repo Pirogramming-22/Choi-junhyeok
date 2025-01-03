@@ -13,10 +13,10 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* 수평 중앙 정렬 */
-    align-items: center;    /* 수직 중앙 정렬 */
-    min-height: 100vh;      /* 화면 전체 높이 */
-    margin: 0;              /* 기본 여백 제거 */
+    justify-content: flex-start; 
+    align-items: center;    
+    min-height: 100vh;      
+    margin: 0;            
     padding-top: 50px;
 }
 
@@ -64,6 +64,11 @@ body {
     border: none;
 }
 
+.buttons button:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+
 .record_field {
     display: flex;
     flex-direction: column;
@@ -88,19 +93,49 @@ body {
 .record_field-top button {
     height: 40px;
     width: 40px;
-    background-color: transparent;
+}
+
+.delete_button {
+    background: transparent;
     border: none;
 }
+
+.delete_button:hover svg{
+    color: red;
+    cursor: pointer;
+}
+
+.check_all_button {
+    background: transparent;
+    border: none;
+}
+
+.check_all_button:hover {
+    cursor: pointer;
+}
+
+.check_button:hover {
+    cursor: pointer;
+}
+
+.check_all {
+    border: solid 2px black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
 .record {
     display: flex;
-    justify-content: space-evenly;
-    margin-right: 200px;
-    gap: 150px;
+    justify-content: space-around;
+    gap: 130px;
     align-items: center;
 }
 
 .record_field-bottom {
     gap: 0;
+    max-height: 250px; 
+    overflow-y: auto; 
 }
 .record_field-bottom svg {
     height: 30px;
@@ -112,5 +147,4 @@ body {
     background-color: transparent;
     border: none;
 }
-
 
