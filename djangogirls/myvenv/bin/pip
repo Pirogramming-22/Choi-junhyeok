@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/choijunhyeok/Desktop/Piro22 실습/Choi-junhyeok/djangogirls/myvenv/bin/python3.13" "$0" "$@"
+'''exec' "/Users/choijunhyeok/Desktop/Piro22 실습/Choi-junhyeok/djangogirls/myvenv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
