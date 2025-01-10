@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>영화 수정</title>
+    <style>
+        /* 기본 설정 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 다크 배경 */
+            color: #ffffff; /* 기본 텍스트 색상 */
+            text-align: center;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #1e1e1e; /* 다크 테마 내부 배경 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* 제목 및 헤더 스타일 */
+        h1 {
+            text-align: center;
+            color: #e50914; /* 넷플릭스 레드 색상 */
+        }
+
+        /* 폼 레이블 */
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #cccccc; /* 회색 텍스트 */
+        }
+
+        /* 입력 및 선택 박스 */
+        input, textarea, select {
+            width: 100%; /* 부모 요소에 맞게 크기 조정 */
+            max-width: 100%; /* 컨테이너를 넘어가지 않도록 제한 */
+            box-sizing: border-box; /* 패딩과 테두리를 포함하여 크기 계산 */
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #333333; /* 어두운 테두리 */
+            border-radius: 5px;
+            background-color: #2a2a2a; /* 입력 필드 배경 */
+            color: #ffffff; /* 텍스트 색상 */
+        }
+
+        /* 버튼 스타일 */
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e50914; /* 넷플릭스 레드 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b00710; /* 버튼 호버 효과 */
+        }
+
+        /* 링크 스타일 */
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #e50914; /* 넷플릭스 레드 */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>영화 수정</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">제목:</label>
+            <input type="text" id="title" name="title" value="{{ movie.title }}" required>
+
+            <label for="release_date">개봉년도:</label>
+            <input type="number" id="release_date" name="release_date" value="{{ movie.release_date }}" min="1900" max="2099" placeholder="YYYY" required>
+
+            <label for="genre">장르:</label>
+            <select id="genre" name="genre" required>
+                <option value="Action" {% if movie.genre == "Action" %}selected{% endif %}>액션</option>
+                <option value="Comedy" {% if movie.genre == "Comedy" %}selected{% endif %}>코미디</option>
+                <option value="Drama" {% if movie.genre == "Drama" %}selected{% endif %}>드라마</option>
+                <option value="Horror" {% if movie.genre == "Horror" %}selected{% endif %}>호러</option>
+                <option value="SF" {% if movie.genre == "SF" %}selected{% endif %}>SF</option>
+                <option value="Thriller" {% if movie.genre == "Thriller" %}selected{% endif %}>스릴러</option>
+                <option value="Animation" {% if movie.genre == "Animation" %}selected{% endif %}>애니메이션</option>
+                <option value="Crime" {% if movie.genre == "Crime" %}selected{% endif %}>범죄</option>
+                <option value="War" {% if movie.genre == "War" %}selected{% endif %}>전쟁</option>
+            </select>
+            <label for="runtime">러닝타임 (분):</label>
+            <input type="number" id="runtime" name="runtime" value="{{ movie.runtime }}" min="0" required>
+
+            <label for="director">감독:</label>
+            <input type="text" id="director" name="director" value="{{ movie.director }}" required>
+
+            <label for="actors">배우:</label>
+            <textarea id="actors" name="actors" rows="2" required>{{ movie.actors }}</textarea>
+
+            <label for="rating">평점 (1-5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" value="{{ average_rating }}" required>
+
+            <label for="review">리뷰:</label>
+            <textarea id="review" name="review" rows="4" required>{{ review.content }}</textarea>
+
+            <button type="submit">저장</button>
+        </form>
+        <a href="{% url 'movie_detail' movie.id %}">취소</a>
+    </div>
+</body>
+</html>

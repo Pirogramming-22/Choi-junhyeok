@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>영화 삭제</title>
+    <style>
+        /* 기본 스타일 설정 */
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex; /* 화면 정가운데로 배치 */
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 전체 화면 높이 */
+            color: white;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 30px 50px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+
+        /* 영화 제목 스타일 */
+        .movie-title {
+            color: white; /* 흰색 텍스트 */
+        }
+
+        /* 버튼 스타일 */
+        button {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #b00710;
+            transform: scale(1.05);
+        }
+
+        /* a 태그 버튼 스타일 */
+        a {
+            display: inline-block;
+            background-color: gray;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a:hover {
+            background-color: #666666;
+            transform: scale(1.05);
+        }
+
+        /* 폼 스타일 */
+        form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>정말로 <span class="movie-title">"{{ movie.title }}"</span>을 삭제하시겠습니까?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">삭제</button>
+            <a href="{% url 'movie_detail' movie.id %}" class="button">취소</a>
+        </form>
+    </div>
+</body>
+</html>
