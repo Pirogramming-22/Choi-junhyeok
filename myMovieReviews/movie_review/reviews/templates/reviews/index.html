@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Junflix</title>
+</head>
+<body>
+    <header>
+        <h1>Junflix</h1>
+        <a class="button" href="{% url 'add_movie_with_review' %}">리뷰 작성</a>
+    </header>
+
+    <div class="container">
+        {% for item in movie_data %}
+        <a href="{% url 'movie_detail' item.movie.id %}" class="card-link">
+            <div class="card">
+                <h3>{{ item.movie.title }}</h3>
+                <p><strong>개봉년도:</strong> {{ item.movie.release_date }}</p> <!-- 개봉년도 표시 -->
+                <p><strong>장르:</strong> {{ item.movie.genre }}</p>
+                <p><strong>별점:</strong> {{ item.average_rating }}</p>
+            </div>
+        </a>
+        {% empty %}
+            <p class="no-review">아직 영화가 없습니다. 첫 영화를 추가해보세요!</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

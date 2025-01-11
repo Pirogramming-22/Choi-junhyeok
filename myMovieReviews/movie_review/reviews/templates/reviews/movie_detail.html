@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
+    <style>
+        /* 기본 설정 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 다크 배경 */
+            color: #ffffff; /* 기본 텍스트 색상 */
+        }
+
+        header {
+            background-color: #1c1c1c;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            color: #e50914;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        header .back-to-home {
+            color: #e50914;
+            text-decoration: none;
+            font-size: 1rem;
+            border: 1px solid #e50914;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header .back-to-home:hover {
+            background-color: #e50914;
+            color: #ffffff;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 섹션 스타일 */
+        section {
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #e50914;
+            margin-bottom: 10px;
+        }
+
+        /* 영화 정보 스타일 */
+        .movie-info p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        .ratings {
+            display: flex;
+            flex-direction: column;
+        }
+        .ratings > ul {
+            list-style: none;
+        }
+
+        .ratings h3 {
+            margin: 0;
+            color: white;
+        }
+
+        .ratings span {
+            color: #e50914;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* 리뷰 리스트 스타일 */
+        .review-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .review-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #292929;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            color: #cccccc;
+        }
+
+        .review-item strong {
+            color: white;
+        }
+
+        /* 관리 버튼 스타일 */
+        .management {
+            text-align: center;
+        }
+
+        .manage-link-delete {
+            text-decoration: none;
+            color: #e50914;
+            font-weight: bold;
+            margin: 0 10px;
+            border: 1px solid #e50914;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .manage-link-edit {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            margin: 0 10px;
+            border: 1px solid #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .manage-link-delete:hover {
+            background-color: #e50914;
+            color: #ffffff;
+        }
+
+        .manage-link-edit:hover {
+            background-color: #ffffff;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ movie.title }}</h1>
+        <a href="{% url 'index' %}" class="back-to-home">my Movie reviews</a>
+    </header>
+
+    <div class="container">
+        <section class="movie-info">
+            <h2>영화 정보</h2>
+            <p><strong>개봉년도:</strong> {{ movie.release_date }}</p>
+            <p><strong>장르:</strong> {{ movie.genre }}</p>
+            <p><strong>감독:</strong> {{ movie.director }}</p> <!-- 감독 필드 -->
+            <p><strong>배우:</strong> {{ movie.actors }}</p> <!-- 배우 필드 -->
+            <p><strong>러닝타임:</strong> {{ movie.runtime }}분</p>
+        </section>
+        
+        <section class="ratings">
+            <h2>평점</h2>
+            <ul class="ratings-list">
+                <li class="ratings-item">
+                    <h3><span>{{ average_rating }}</span> / 5</h3>
+                </li>
+            </ul>
+        </section>
+
+        <section class="reviews">
+            <h2>리뷰</h2>
+            {% if reviews %}
+                <ul class="review-list">
+                    {% for review in reviews %}
+                    <li class="review-item">
+                        <strong>{{ review.reviewer }}</strong>{{ review.content }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-review">아직 리뷰가 없습니다. 첫 리뷰를 작성해보세요!</p>
+            {% endif %}
+        </section>
+
+        <section class="management">
+            <a href="{% url 'edit_movie' movie.id %}" class="manage-link-edit">수정</a>
+            <a href="{% url 'delete_movie' movie.id %}" class="manage-link-delete">삭제</a>
+        </section>
+    </div>
+</body>
+</html>
