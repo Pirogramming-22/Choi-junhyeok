@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
-<script src="{% static 'js/ideas.js' %}"></script>
+
 {% block title %}아이디어 목록{% endblock %}
 
 {% block content %}
@@ -23,6 +22,7 @@
 <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
     {% for idea in ideas %}
         <li style="width: 300px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; background-color: #f9f9f9; text-align: center;">
+            <!-- 아이디어 썸네일 -->
             <div>
                 {% if idea.image and idea.image.url %}
                     <img src="{{ idea.image.url }}" alt="{{ idea.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
@@ -32,17 +32,41 @@
                     </div>
                 {% endif %}
             </div>
+
+            <!-- 아이디어 제목 -->
             <div style="margin: 10px 0;">
-                <a href="#" style="font-size: 18px; font-weight: bold; text-decoration: none; color: #333;">{{ idea.title }}</a>
+                <a href="{% url 'idea_detail' idea.id %}" style="font-size: 18px; font-weight: bold; text-decoration: none; color: #333;">
+                    {{ idea.title }}
+                </a>
             </div>
+
+            <!-- 개발툴 -->
             <div style="margin: 10px 0;">
-                <strong>관심도:</strong>
-                <span id="interest-{{ idea.id }}">{{ idea.interest }}</span>
-                <button onclick="updateInterest({{ idea.id }}, 1)">+</button>
-                <button onclick="updateInterest({{ idea.id }}, -1)">-</button>
+                <p style="font-size: 14px; color: #555;">
+                    <strong>개발툴:</strong> 
+                    {% if idea.devtool %}
+                        {{ idea.devtool.name }}
+                    {% else %}
+                        없음
+                    {% endif %}
+                </p>
             </div>
+
+<!-- 관심도 조정 -->
             <div style="margin: 10px 0;">
-                <span id="star-{{ idea.id }}" style="cursor: pointer;" onclick="toggleStar({{ idea.id }})">
+                <p style="display: inline; font-weight: bold;">관심도:</p>
+                <span id="interest-{{ idea.id }}" style="font-size: 16px;">{{ idea.interest }}</span>
+                <button onclick="updateInterest({{ idea.id }}, 1)" 
+                        style="margin-left: 5px; padding: 5px;">+</button>
+                <button onclick="updateInterest({{ idea.id }}, -1)" 
+                        style="padding: 5px;">-</button>
+            </div>
+
+            <!-- 찜하기 -->
+            <div style="margin: 10px 0;">
+                <span id="star-{{ idea.id }}" 
+                      style="font-size: 20px; cursor: pointer; color: gold;" 
+                      onclick="toggleStar({{ idea.id }})">
                     {% if idea.ideastar.is_starred %}★{% else %}☆{% endif %}
                 </span>
             </div>
@@ -53,12 +77,18 @@
 <!-- 페이지네이션 -->
 <div style="text-align: center; margin-top: 20px;">
     {% if ideas.has_previous %}
-        <a href="?sort_by={{ sort_by }}&page={{ ideas.previous_page_number }}">이전</a>
+        <a href="?sort_by={{ sort_by }}&page={{ ideas.previous_page_number }}" style="margin-right: 10px;">이전</a>
     {% endif %}
     <span>페이지 {{ ideas.number }} / {{ ideas.paginator.num_pages }}</span>
     {% if ideas.has_next %}
-        <a href="?sort_by={{ sort_by }}&page={{ ideas.next_page_number }}">다음</a>
+        <a href="?sort_by={{ sort_by }}&page={{ ideas.next_page_number }}" style="margin-left: 10px;">다음</a>
     {% endif %}
 </div>
-{% endblock %}
 
+<!-- 아이디어 등록 버튼 -->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{% url 'add_idea' %}" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+        새로운 아이디어 등록
+    </a>
+</div>
+{% endblock %}
