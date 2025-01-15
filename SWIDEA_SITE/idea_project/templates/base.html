@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}아이디어 관리 시스템{% endblock %}</title>
+    <style>
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        nav > a {
+            text-decoration: none;
+            color: black;
+        }
+        nav > a:hover {
+            color: blue;
+        }
+        .right-nav > a{
+            margin-right: 20px; 
+        }
+    
+        .right-nav:last-child {
+            margin-right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class ="nav">
+        <nav class="left-nav">
+            <a href="{% url 'idea_list' %}">MY <span>SW IDEA</span> SITE</a>
+        </nav>
+        <nav class = "right-nav">
+            <a href="{% url 'idea_list' %}">아이디어 관리</a>
+            <a href="{% url 'add_idea' %}">아이디어 등록</a>
+            <a href="{% url 'tool_list' %}">개발툴 관리</a>
+            <a href="{% url 'add_tool' %}">개발툴 등록</a>
+        </nav>
+    </nav>
+
+    <!-- 페이지 컨텐츠 -->
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

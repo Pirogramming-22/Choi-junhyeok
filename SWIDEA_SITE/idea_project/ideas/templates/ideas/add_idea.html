@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}아이디어 등록{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    <h1 style="text-align: center; color: #333;">아이디어 등록</h1>
+
+    <!-- 오류 메시지 -->
+    {% if error %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
+
+    <!-- 등록 폼 -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- 제목 -->
+        <div style="margin-bottom: 15px;">
+            <label for="title" style="display: block; font-weight: bold;">제목:</label>
+            <input type="text" id="title" name="title" style="width: 100%; padding: 10px;" required>
+        </div>
+
+        <!-- 내용 -->
+        <div style="margin-bottom: 15px;">
+            <label for="content" style="display: block; font-weight: bold;">내용:</label>
+            <textarea id="content" name="content" rows="4" style="width: 100%; padding: 10px;" required></textarea>
+        </div>
+
+        <!-- 관심도 -->
+        <div style="margin-bottom: 15px;">
+            <label for="interest" style="display: block; font-weight: bold;">관심도:</label>
+            <input type="number" id="interest" name="interest" value="0" style="width: 100%; padding: 10px;" required>
+        </div>
+
+        <!-- 개발툴 -->
+        <div style="margin-bottom: 15px;">
+            <label for="devtool" style="display: block; font-weight: bold;">개발툴:</label>
+            <select id="devtool" name="devtool" style="width: 100%; padding: 10px;">
+                <option value="">-- 선택 --</option>
+                {% for tool in tools %}
+                    <option value="{{ tool.id }}">{{ tool.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- 이미지 -->
+        <div style="margin-bottom: 15px;">
+            <label for="image" style="display: block; font-weight: bold;">이미지:</label>
+            <input type="file" id="image" name="image" style="width: 100%; padding: 10px;">
+        </div>
+
+        <!-- 저장 버튼 -->
+        <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+            저장
+        </button>
+    </form>
+
+    <!-- 목록으로 돌아가기 -->
+    <div style="text-align: center; margin-top: 15px;">
+        <a href="{% url 'idea_list' %}" style="color: #007bff; text-decoration: none;">목록으로</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ idea.title }} 상세{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    <!-- 아이디어 제목 -->
+    <h1 style="text-align: center; color: #333;">{{ idea.title }}</h1>
+
+    <!-- 아이디어 이미지 -->
+    {% if idea.image %}
+        <div style="text-align: center; margin: 20px 0;">
+            <img src="{{ idea.image.url }}" alt="{{ idea.title }}" style="width:100%; max-width:300px; border-radius: 5px;">
+        </div>
+    {% endif %}
+
+    <!-- 아이디어 내용 -->
+    <p><strong>내용:</strong> {{ idea.content }}</p>
+
+    <!-- 관심도 -->
+    <p>
+        <strong>관심도:</strong> 
+        <span id="interest-{{ idea.id }}">{{ idea.interest }}</span>
+    </p>
+
+    <!-- 찜하기 기능 -->
+    <p>
+        <strong>찜하기:</strong> 
+        <span id="star-{{ idea.id }}" 
+              style="font-size: 24px; cursor: pointer; color: gold;" 
+              onclick="toggleStar({{ idea.id }})">
+            {% if star and star.is_starred %}★{% else %}☆{% endif %}
+        </span>
+    </p>
+
+    <!-- 개발툴 정보 -->
+    <p>
+        <strong>개발툴:</strong> 
+        {% if idea.devtool %}
+            <a href="{% url 'tool_detail' idea.devtool.id %}" style="color: #007bff; text-decoration: none;">
+                {{ idea.devtool.name }}
+            </a>
+        {% else %}
+            없음
+        {% endif %}
+    </p>
+
+    <!-- 수정, 삭제, 목록 버튼 -->
+    <div style="margin-top: 20px;">
+        <a href="{% url 'edit_idea' idea.id %}" 
+           style="padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+            수정
+        </a>
+        <form method="post" action="{% url 'delete_idea' idea.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" 
+                    style="padding: 10px 15px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                삭제
+            </button>
+        </form>
+        <a href="{% url 'idea_list' %}" 
+           style="padding: 10px 15px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px;">
+            목록으로
+        </a>
+    </div>
+</div>
+
+<!-- 찜하기 AJAX 스크립트 -->
+<script>
+    function toggleStar(ideaId) {
+        fetch(`/ideas/${ideaId}/star/`)
+            .then(response => response.json())
+            .then(data => {
+                const starIcon = document.getElementById(`star-${ideaId}`);
+                starIcon.textContent = data.is_starred ? '★' : '☆';
+            });
+    }
+</script>
+{% endblock %}

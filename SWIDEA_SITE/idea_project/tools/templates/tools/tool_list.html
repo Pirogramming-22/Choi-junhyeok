@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}개발툴 목록{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 20px auto;">
+    <h1 style="text-align: center; color: #333;">개발툴 목록</h1>
+
+    <!-- 개발툴 등록 버튼 -->
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{% url 'add_tool' %}" style="padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+            개발툴 등록
+        </a>
+    </div>
+
+    <!-- 개발툴 목록 -->
+    <ul style="list-style: none; padding: 0;">
+        {% for tool in tools %}
+            <li style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                <!-- 개발툴 이름과 종류 -->
+                <a href="{% url 'tool_detail' tool.id %}" style="font-size: 18px; font-weight: bold; text-decoration: none; color: #333;">
+                    {{ tool.name }}
+                </a>
+                <p style="margin: 5px 0; color: #555;">종류: {{ tool.kind }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
