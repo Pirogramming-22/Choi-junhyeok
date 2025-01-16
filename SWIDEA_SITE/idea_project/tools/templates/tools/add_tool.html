@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}개발툴 등록{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    <h1 style="text-align: center; color: #333;">개발툴 등록</h1>
+
+    <!-- 에러 메시지 -->
+    {% if error %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
+
+    <!-- 등록 폼 -->
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- 이름 -->
+        <div style="margin-bottom: 15px;">
+            <label for="name" style="display: block; font-weight: bold;">이름:</label>
+            <input type="text" id="name" name="name" style="width: 100%; padding: 10px;" required>
+        </div>
+
+        <!-- 종류 -->
+        <div style="margin-bottom: 15px;">
+            <label for="kind" style="display: block; font-weight: bold;">종류:</label>
+            <input type="text" id="kind" name="kind" style="width: 100%; padding: 10px;" required>
+        </div>
+
+        <!-- 내용 -->
+        <div style="margin-bottom: 15px;">
+            <label for="content" style="display: block; font-weight: bold;">내용:</label>
+            <textarea id="content" name="content" rows="4" style="width: 100%; padding: 10px;" required></textarea>
+        </div>
+
+        <!-- 저장 버튼 -->
+        <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+            저장
+        </button>
+    </form>
+
+    <!-- 목록으로 버튼 -->
+    <div style="text-align: center; margin-top: 15px;">
+        <a href="{% url 'tool_list' %}" style="color: #007bff; text-decoration: none;">목록으로</a>
+    </div>
+</div>
+{% endblock %}

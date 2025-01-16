@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tool.name }} 상세 정보{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    <!-- 개발툴 이름 -->
+    <h1 style="text-align: center; color: #333;">{{ tool.name }}</h1>
+
+    <!-- 개발툴 정보 -->
+    <p><strong>종류:</strong> {{ tool.kind }}</p>
+    <p><strong>내용:</strong> {{ tool.content }}</p>
+
+    <!-- 개발툴 사용 아이디어 목록 -->
+    <h2 style="margin-top: 30px; color: #333;">사용한 아이디어 목록</h2>
+    <ul style="list-style: none; padding: 0;">
+        {% if ideas %}
+            {% for idea in ideas %}
+                <li style="margin-bottom: 10px; border: 1px solid #ddd; padding: 10px; border-radius: 5px; background-color: #ffffff;">
+                    <a href="{% url 'idea_detail' idea.id %}" 
+                       style="text-decoration: none; color: #007bff; font-weight: bold;">
+                        {{ idea.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p style="color: #555;">이 개발툴을 사용한 아이디어가 없습니다.</p>
+        {% endif %}
+    </ul>
+
+    <!-- 버튼 섹션 -->
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{% url 'edit_tool' tool.id %}" 
+           style="display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">
+            수정
+        </a>
+        <form method="post" action="{% url 'delete_tool' tool.id %}" style="display: inline-block;">
+            {% csrf_token %}
+            <button type="submit" 
+                    style="padding: 10px 15px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                삭제
+            </button>
+        </form>
+        <a href="{% url 'tool_list' %}" 
+           style="display: inline-block; padding: 10px 15px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px;">
+            목록으로
+        </a>
+    </div>
+</div>
+{% endblock %}
