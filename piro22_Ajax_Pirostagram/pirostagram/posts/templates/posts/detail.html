@@ -1,0 +1,26 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<a href="{% url 'edit' post.id %}">수정</a>
+<form method="post" action="{% url 'delete' post.id %}">
+    {% csrf_token %}
+    <button type="submit">삭제</button>
+</form>
+<a href="{% url 'index' %}">목록으로</a>
+
+<p>좋아요: <span id="likes-count">{{ post.likes }}</span></p>
+<button id="like-btn">좋아요 👍</button>
+
+<script>
+    document.getElementById('like-btn').addEventListener('click', function() {
+        fetch("{% url 'like_post_ajax' post.id %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('likes-count').textContent = data.likes;
+        });
+    });
+</script>
