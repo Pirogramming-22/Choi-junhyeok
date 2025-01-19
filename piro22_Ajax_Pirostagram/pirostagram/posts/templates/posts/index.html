@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+    <link rel="stylesheet" href="{% static 'posts/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>게시글 목록</h1>
+        <a href="{% url 'create' %}" class="button">게시글 작성</a>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="{% url 'detail' post.id %}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
